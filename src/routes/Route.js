@@ -6,12 +6,15 @@ import { Route, Redirect } from 'react-router-dom';
 import AuthLayout from '~/pages/_layouts/auth/index';
 import DefaultLayout from '~/pages/_layouts/default/index';
 
+// colocar chaves ja que o store agora tem mais que uma exportação
+import { store } from '~/store';
+
 export default function RouterWrapper({
   component: Component,
   isPrivate,
   ...rest
 }) {
-  const signed = false;
+  const { signed } = store.getState().auth;
 
   if (!signed && isPrivate) {
     return <Redirect to="/" />;
