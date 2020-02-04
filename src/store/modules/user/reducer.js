@@ -16,6 +16,11 @@ export default function user(state = INITIAL_STATE, action) {
         draft.profile = action.payload.profile;
         break;
       }
+      case '@auth/SIGN_OUT': {
+        // eslint-disable-next-line
+        draft.profile = null;
+        break;
+      }
 
       default:
     }
